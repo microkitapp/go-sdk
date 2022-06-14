@@ -9,7 +9,7 @@ func InitConfigItem (value string, valueType string) ConfigItem {
 	return ConfigItem{value: value, valueType: valueType}
 }
 
-func (c ConfigItem) GetValue () (s interface{}) {
+func (c ConfigItem) GetValue () string {
 	return c.value
 }
 
