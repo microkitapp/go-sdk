@@ -32,7 +32,7 @@ func  InitKit(sdk_key string, options map[string]string) (*MicroKit) {
 		kitInstance = new(MicroKit)
 		client := new(HttpClient)
 		var secret string
-		sdk_key, secret = parseSdkKey(sdk_key, keySize, options[service])
+		sdk_key, secret = parseSdkKey(sdk_key, keySize, options["service"])
 		
 		resp := client.Get(options["url"], sdk_key)
 		bodyBytes, err := ioutil.ReadAll(resp.Body)
@@ -40,7 +40,7 @@ func  InitKit(sdk_key string, options map[string]string) (*MicroKit) {
 			log.Fatal(err)
 		}
 		
-		fmt.Printf("%s+++++%s",key, secret)
+		
 		var data ApiRes
 		json.Unmarshal(bodyBytes, &data)
 		decryptBody, _ := decryptCBC(data.Config, secret)
