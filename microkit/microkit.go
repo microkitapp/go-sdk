@@ -94,7 +94,7 @@ func PKCS5Trimming(encrypt []byte) []byte {
 func parseSdkKey (key string, keySize int, service string) (string, string) {
 	var sdkKey string
 	if service != "" {
-		sdkKey = fmt.Sprintf("%s-%s", key[:len(key)-keySize], service)
+		sdkKey = fmt.Sprintf("%s%s", key[:len(key)-keySize], service)
 	} else {
 		sdkKey = key[:len(key)-(keySize+1)]
 	}
